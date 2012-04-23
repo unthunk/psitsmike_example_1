@@ -1,7 +1,11 @@
-var app = require('express').createServer()
-var io = require('socket.io').listen(app);
+var express = require('express')
+  , http = require('http');
 
-app.listen(8080);
+var app = express();
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
+
+server.listen(8080);
 
 // routing
 app.get('/', function (req, res) {
